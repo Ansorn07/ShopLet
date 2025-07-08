@@ -10,7 +10,8 @@ Inspired by high-performance brands like **Puma** and **Adidas**, Shoplet delive
 - 🔹 React  
 - 🔹 Redux (Global state management)  
 - 🔹 React Router  
-- 🔹 Tailwind CSS  
+- 🔹 Tailwind CSS
+- 
 ## 🔥 Features
 
 - 🛒 Redux-based cart with dynamic item counter  
