@@ -6,33 +6,49 @@ const Navbar = () => {
   const { cart } = useSelector((state) => state);
 
   return (
-    <div className="flex flex-row justify-between items-center h-20 max-w-6xl mx-auto">
-      <NavLink to="/">
-      <div className="ml-6">
-  <img src="/logo.png" className="h-14 w-36 object-contain" alt="Logo" />
-</div>
+    <header className="w-full bg-black text-white shadow-md">
+      {/* 🔝 Top Announcement Bar */}
+      <div className="text-sm text-center bg-white text-black py-1 font-semibold">
+        SOLVE YOUR QUERIES FASTER – CONNECT ON LINKEDIN •{" "}
+        <a
+          href="https://www.linkedin.com/in/a-s-babji-rao/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-blue-600 hover:text-blue-800"
+        >
+          CLICK HERE
+        </a>
+      </div>
 
-      </NavLink>
-
-      <div className="flex flex-row items-center gap-x-6 mr-6 text-slate-100 -tracking-tighter font-medium">
+      {/* 🌐 Main Navbar */}
+      <nav className="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
+        {/* Logo */}
         <NavLink to="/">
-          <p className="hover:text-green-400 cursor-pointer duration-300 transition-all ease-in">
-            Home
-          </p>
+          <img src="/logo.png" className="h-14 w-36 object-contain" alt="Logo" />
         </NavLink>
 
-        <NavLink to="/cart">
-          <div className="relative">
-            <FaShoppingCart className="text-2xl" />
+        {/* Menu Links (all redirect to home) */}
+        <div className="hidden md:flex items-center gap-10 text-sm font-semibold tracking-wide">
+          {["New", "Men", "Women", "Sale", "Kids", "Lifestyle"].map((label) => (
+            <NavLink key={label} to="/" className="hover:text-red-500 transition">
+              {label}
+            </NavLink>
+          ))}
+        </div>
+
+        {/* Cart Icon */}
+        <div className="flex items-center gap-6">
+          <NavLink to="/cart" className="relative">
+            <FaShoppingCart className="text-2xl hover:text-red-600 transition" />
             {cart.length > 0 && (
-              <span className="absolute -top-1 -right-2 bg-green-600 rounded-full text-sm w-5 h-5 grid justify-items-center animate-bounce text-white">
+              <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full animate-bounce">
                 {cart.length}
               </span>
             )}
-          </div>
-        </NavLink>
-      </div>
-    </div>
+          </NavLink>
+        </div>
+      </nav>
+    </header>
   );
 };
 

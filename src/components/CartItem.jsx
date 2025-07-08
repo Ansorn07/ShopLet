@@ -10,21 +10,30 @@ const CartItem = ({ item }) => {
     dispatch(remove(item.id));
     toast.error("Item Removed From Cart");
   };
+
   return (
-    <div className="flex items-center p-5 justify-between mt-2 mb-2 mx-5 border-b-[3px] border-slate-500  ">
-      <div className="flex flex-row p-3 gap-5 items-center">
-        <div className="w-[30%]">
-          <img src={item.image} className="object-cover" />
-        </div>
-        <div className="w-[70%] self-start space-y-5 ml-5">
-          <h1 className="text-xl text-slate-700 font-semibold">{item.title}</h1>
-          <p className="text-base text-slate-700 font-medium">{item.description}</p>
-          <div className="flex items-center justify-between">
-            <p className="text-green-600 font-bold text-lg">${item.price}</p>
-            <button className="text-red-800  bg-red-200 group hover:bg-red-400 transition-transform duration-300 cursor-pointer rounded-full p-3 mr-3" onClick={removeFromCart}>
-              <AiFillDelete />
-            </button>
-          </div>
+    <div className="flex flex-col sm:flex-row justify-between items-center gap-6 border-b border-gray-300 p-6 transition hover:shadow-md rounded-lg mx-4 my-4 bg-white">
+      
+      {/* Product Image */}
+      <div className="w-full sm:w-1/4 flex justify-center">
+        <img src={item.image} alt={item.title} className="h-32 object-contain" />
+      </div>
+
+      {/* Product Info */}
+      <div className="w-full sm:w-3/4 flex flex-col gap-4">
+        <h2 className="text-lg font-semibold text-gray-800 leading-snug">{item.title}</h2>
+        <p className="text-sm text-gray-600 line-clamp-2">{item.description}</p>
+        
+        {/* Price and Remove Button */}
+        <div className="flex justify-between items-center mt-2">
+          <span className="text-xl font-bold text-green-700">${item.price}</span>
+          <button
+            onClick={removeFromCart}
+            className="p-2 bg-red-100 hover:bg-red-400 text-red-700 rounded-full transition-transform hover:scale-110"
+            title="Remove item"
+          >
+            <AiFillDelete size={20} />
+          </button>
         </div>
       </div>
     </div>

@@ -15,7 +15,7 @@ const Home = () => {
       console.log(data);
       setProducts(data);
     } catch (err) {
-      console.log(err);
+      console.error("Fetch error:", err);
       setProducts([]);
     }
     setLoading(false);
@@ -26,17 +26,24 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen bg-[#f8f8f8] py-10 px-4">
       {loading ? (
         <Spinner />
       ) : products.length > 0 ? (
-        <div className="grid xs:gridcols-1 sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto space-y-10 space-x-5 min-h-[80vh]">
-          {products.map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
-        </div>
+        <>
+          <h1 className="text-4xl font-extrabold text-center text-black mb-10 tracking-tight">
+            🔥 Featured Collection
+          </h1>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {products.map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
+          </div>
+        </>
       ) : (
-        <div>No Products Found</div>
+        <div className="text-center text-gray-600 text-xl font-medium">
+          No Products Found
+        </div>
       )}
     </div>
   );
