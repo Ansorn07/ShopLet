@@ -21,5 +21,3 @@ Inspired by high-performance brands like **Puma** and **Adidas**, Shoplet delive
 - 📱 Fully responsive and mobile-friendly  
 - ⚡ Built for speed and clarity  
 
----
-
